@@ -1,0 +1,12 @@
+.form-width {
+  width: 200px;
+}
+
+.submit-width {
+  width: min-content;
+  display: inl;
+}
+
+.textRegister {
+  width: 300px;
+}

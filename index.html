@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Register</title>
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-dark text-white">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-12 d-flex justify-content-center flex-column">
+          <h2 class="text-center text-white">Gestion de Usuarios</h2>
+          <div class="text-center">
+            <button id="btn-login" class="btn btn-success mr-3">Login</button>
+            <button id="btn-register" class="btn btn-success mr-3">
+              Registro
+            </button>
+            <button id="btn-list" class="btn btn-success mr-3" disabled>
+              Lista
+            </button>
+            <button id="btn-delete" class="btn btn-success" disabled>
+              Borrar
+            </button>
+          </div>
+        </div>
+        <div class="col-12 mt-3 justify-content-center" id="message-show">
+          <p></p>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <form
+            id="form-login"
+            class="d-flex flex-column justify-content-center"
+          >
+            <div class="d-flex flex-row mt-3">
+              <label class="mr-5">Email</label>
+              <input
+                type="email"
+                placeholder="email@email.com"
+                id="login-mail"
+              />
+            </div>
+            <div class="d-flex flex-row mt-2">
+              <label class="mr-3 pr-1">Password </label>
+              <input type="password" id="login-pass" />
+            </div>
+            <input
+              class="mt-3 submit-width align-self-center"
+              type="submit"
+              value="Entrar"
+              id="login-submit"
+            />
+          </form>
+        </div>
+        <div id="form-register" class="col-12 justify-content-center d-none">
+          <form class="d-flex flex-column justify-content-center">
+            <label class="mt-3">Nombre</label>
+            <input type="text" class="textRegister" id="register-name" />
+            <label class="mt-2">Apellidos</label>
+            <input type="text" class="textRegister" id="register-surname" />
+            <label class="mt-2">Email</label>
+            <input type="email" class="textRegister" id="register-mail" />
+            <label class="mt-2">Contraseña</label>
+            <input type="password" class="textRegister" id="register-pass" />
+            <label class="mt-2">Contraseña</label>
+            <input type="password" class="textRegister" id="register-pass2" />
+            <div class="mt-2">
+              <label>Edad</label>
+              <input type="text" id="register-age" style="width: 30px;" />
+            </div>
+            <input
+              type="submit"
+              class="submit-width mt-3 align-self-center"
+              id="register-submit"
+              value="Enviar"
+            />
+          </form>
+        </div>
+        <div
+          id="optionDelete"
+          class="col-12 flex-column justify-content-center d-none"
+        >
+          <form id="form-delete" class="align-self-center">
+            <label class="mr-2">Usuario</label>
+            <select id="users"></select>
+            <input id="submit-delete" type="submit" value="Borrar" disabled />
+          </form>
+          <div class="flex-column d-none" id="userdata">
+            <div class="d-flex justify-content-between mt-2">
+              <div>
+                <label>Nombre</label>
+                <input id="deleteName" type="text" />
+              </div>
+              <div>
+                <label>Apellidos</label>
+                <input id="deleteSurname" type="text" style="width: 350;" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-between mt-2">
+              <div>
+                <label class="mr-2">Email</label>
+                <input id="deleteEmail" type="text" style="width: 350px;" />
+              </div>
+              <div>
+                <label class="mr-2">Edad</label>
+                <input id="deleteAge" type="text" style="width: 30px;" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="shown" class="col-12 d-none">
+          <div class="row">
+            <div class="col-12">
+              <p class="pl-4">
+                Mostrar
+                <select id="shown-select">
+                  <option value="2" selected>2</option>
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                </select>
+                entradas
+              </p>
+            </div>
+            <div class="col-12">
+              <div class="col-12">
+                <table id="tableusers" class="table table-hover bg-white">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Apellidos</th>
+                      <th scope="col">e-mail</th>
+                      <th scope="col">Edad</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div class="row">
+                <div class="col-8 d-flex justify-content-center">
+                  <button id="first"><<</button>
+                  <button id="previous"><</button>
+                  <label id="showing" class="ml-2 mr-2">Mostrando pagina</label
+                  ><label id="current"></label
+                  ><label id="of" class="ml-2 mr-2">de</label
+                  ><label id="total"></label>
+                  <button id="next" class="ml-2">></button>
+                  <button id="last">>></button>
+                </div>
+                <div class="col-4 d-flex justify-content-center">
+                  <button id="deleteuser" disabled>Borrar Usuario</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <button id="listUsers" class="btn btn-primary d-none">
+      Mostrar Usuarios
+    </button> -->
+
+    <script src="./script.js" type="module"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
